@@ -1,0 +1,82 @@
+
+<div
+    class="container-sm">
+
+    {{ newForm.value | json }}
+    <form #newForm="ngForm" (ngSubmit)="save(newForm)">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="name"
+                aria-describedby="emailHelpId"
+                placeholder="Enter your name"
+                ngModel
+                required
+                [class.is-invalid]="name.touched && name.invalid" #name="ngModel" minlength="3" #minlength="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+            <div *ngIf="name.errors && name.errors['required']">
+                Name is required
+    
+            </div>
+            <div *ngIf="minlength.errors && minlength.errors['minlength']">
+                minlength three is requiredd
+    
+            </div>
+            
+        </div>
+       
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                aria-describedby="emailHelpId"
+                placeholder="Enter your email"
+                ngModel
+                required
+                [class.is-invalid]="email.touched && email.invalid" #email="ngModel" email
+            />
+            <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                <div *ngIf="email.errors && email.errors['required']">
+                    Email is required
+                </div>
+                <div *ngIf="email.errors && email.errors['email']">
+                    Invalid email format
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input
+                type="number"
+                class="form-control"
+                name="age"
+                id="age"
+                aria-describedby="emailHelpId"
+                placeholder="Enter your age"
+                ngModel
+                required
+                [class.is-invalid]="age.touched && age.invalid" #age="ngModel"
+            />
+            <div class="alert alert-danger" *ngIf="age.touched && age.invalid">
+                <div *ngIf="age.errors && age.errors['required']">
+                    Age is required
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" [disabled]="!newForm.valid">
+            Save
+        </button>
+    </form>
+</div>
+
+
+
