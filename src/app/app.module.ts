@@ -8,6 +8,12 @@ import { HelpComponent } from './MyComponent/help/help.component';
 import { TwoWayDatabindingComponent } from './MyComponent/two-way-databinding/two-way-databinding.component';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './MyComponent/form/form.component';
+import { StudentlistComponent } from './MyComponent/studentlist/studentlist.component';
+import { ServiceService } from './Service/service.service';
+import{HttpClientModule} from '@angular/common/http';
+import { ApiComponent } from './MyComponent/api/api.component'
+
+
 
 
 
@@ -19,6 +25,8 @@ import { FormComponent } from './MyComponent/form/form.component';
     HelpComponent,
     TwoWayDatabindingComponent,
     FormComponent,
+    StudentlistComponent,
+    ApiComponent,
   
    
     
@@ -26,9 +34,10 @@ import { FormComponent } from './MyComponent/form/form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
