@@ -8,7 +8,8 @@ import { PostService } from 'src/app/Service/post.service';
 })
 export class FormComponent {
   constructor(private postService: PostService) { }
-
+  response: boolean = false;
+  errorOccurred: boolean = false;
   save(newForm: any) {
     if (newForm.valid) { // Check if the form is valid
       console.log(newForm.value); // Log the form data to the console
@@ -18,10 +19,14 @@ export class FormComponent {
         (response: any) => {
           console.log('Form data saved successfully:', response);
           // Optionally, you can perform additional actions after saving data
+          this.response = true; 
+          this.errorOccurred = false;
         },
         (error: any) => {
           console.error('Error saving form data:', error);
           // Handle error if needed
+          this.errorOccurred = true; // Set error flag to true
+          this.response = false;
         }
       );
     } else {

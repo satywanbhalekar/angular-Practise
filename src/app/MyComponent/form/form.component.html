@@ -1,6 +1,21 @@
 
 <div
     class="container-sm">
+    <div class="container-sm">
+        <!-- Your form code -->
+    
+        <!-- Success message -->
+        <div *ngIf="response" class="alert alert-success">
+            Data inserted successfully!
+        </div>
+    
+        <!-- Error message -->
+        <div *ngIf="errorOccurred" class="alert alert-danger">
+            Error occurred while saving data. Please try again later.
+        </div>
+    </div>
+    
+    
 
     {{ newForm.value | json }}
     <form #newForm="ngForm" (ngSubmit)="save(newForm)">
