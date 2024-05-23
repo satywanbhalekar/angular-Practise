@@ -4,6 +4,26 @@
 
     {{ newForm.value | json }}
     <form #newForm="ngForm" (ngSubmit)="save(newForm)">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">ranking</label>
+            <input
+                type="text"
+                class="form-control"
+                name="ranking"
+                id="name"
+                aria-describedby="emailHelpId"
+                placeholder="Enter your ranking"
+                ngModel
+                required
+               
+            />
+            
+            
+        </div>
+
+
+
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input
@@ -28,9 +48,62 @@
             </div>
             
         </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">dob</label>
+            <input
+                type="text"
+                class="form-control"
+                name="dob"
+                id="dob"
+                aria-describedby="emailHelpId"
+                placeholder="Enter your ranking"
+                ngModel
+                required
+               
+            />
+            
+            
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">country</label>
+            <input
+                type="text"
+                class="form-control"
+                name="country"
+                id="dob"
+                aria-describedby="emailHelpId"
+                placeholder="Enter your country"
+                ngModel
+                required
+               
+            />
+            
+            
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">score</label>
+            <input
+                type="text"
+                class="form-control"
+                name="score"
+                id="dob"
+                aria-describedby="emailHelpId"
+                placeholder="Enter your score"
+                ngModel
+                required
+               
+            />
+            
+            
+        </div>
+
+
        
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input
                 type="email"
@@ -70,7 +143,7 @@
                     Age is required
                 </div>
             </div>
-        </div>
+        </div> -->
         
         <button type="submit" [disabled]="!newForm.valid">
             Save
@@ -80,3 +153,21 @@
 
 
 
+<!-- 
+
+ <form [formGroup]="form" (ngSubmit)="save()">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name">
+    </div>
+    <div>
+      <label for="country">Country:</label>
+      <input type="text" id="country" formControlName="country">
+    </div>
+    <div>
+      <label for="score">Score:</label>
+      <input type="number" id="score" formControlName="score">
+    </div>
+    <button type="submit">Save</button>
+  </form>
+   -->

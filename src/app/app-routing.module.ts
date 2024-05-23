@@ -6,11 +6,13 @@ import { FormComponent } from './MyComponent/form/form.component';
 import { ApiComponent } from './MyComponent/api/api.component';
 
 
+
 const routes: Routes = [
 
   { path: 'about', component: AboutComponent },
   { path: 'form', component: FormComponent },
   { path: 'api', component: ApiComponent },
+
 
 ];
 

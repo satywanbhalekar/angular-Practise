@@ -11,7 +11,12 @@ import { FormComponent } from './MyComponent/form/form.component';
 import { StudentlistComponent } from './MyComponent/studentlist/studentlist.component';
 import { ServiceService } from './Service/service.service';
 import{HttpClientModule} from '@angular/common/http';
-import { ApiComponent } from './MyComponent/api/api.component'
+import { ApiComponent } from './MyComponent/api/api.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
+
 
 
 
@@ -27,6 +32,7 @@ import { ApiComponent } from './MyComponent/api/api.component'
     FormComponent,
     StudentlistComponent,
     ApiComponent,
+
   
    
     
@@ -35,7 +41,8 @@ import { ApiComponent } from './MyComponent/api/api.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

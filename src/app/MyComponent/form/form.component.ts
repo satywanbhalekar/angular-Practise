@@ -1,30 +1,31 @@
-import { Component  } from '@angular/core';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Validators from @angular/forms
+import { Component } from '@angular/core';
+import { PostService } from 'src/app/Service/post.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-
 export class FormComponent {
-  // Define a form group
-  // myForm: FormGroup;
+  constructor(private postService: PostService) { }
 
-  // constructor(private formBuilder: FormBuilder) {
-  //   // Initialize the form group with form controls and their validators
-  //   this.myForm = this.formBuilder.group({
-  //     name: ['', [Validators.required, Validators.minLength(3)]], // Name field with required validator
-  //     email: ['', [Validators.required, Validators.email]], // Email field with required and email validators
-  //     age: ['', Validators.required] // Age field with required validator
-  //   });
-  // }
+  save(newForm: any) {
+    if (newForm.valid) { // Check if the form is valid
+      console.log(newForm.value); // Log the form data to the console
 
-  // Method to handle form submission
-
-    save(formData:any){
-      console.log(formData.value)
+      // Call your API service to save the form data
+      this.postService.createPost(newForm.value).subscribe(
+        (response: any) => {
+          console.log('Form data saved successfully:', response);
+          // Optionally, you can perform additional actions after saving data
+        },
+        (error: any) => {
+          console.error('Error saving form data:', error);
+          // Handle error if needed
+        }
+      );
+    } else {
+      console.log('Form is invalid.'); // Log a message if the form is invalid
     }
-    
+  }
 }
