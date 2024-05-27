@@ -13,6 +13,7 @@ import { ServiceService } from './Service/service.service';
 import{HttpClientModule} from '@angular/common/http';
 import { ApiComponent } from './MyComponent/api/api.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './MyComponent/login/login.component';
 
 
 
@@ -32,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormComponent,
     StudentlistComponent,
     ApiComponent,
+    LoginComponent,
 
   
    

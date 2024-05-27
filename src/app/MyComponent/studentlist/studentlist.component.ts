@@ -22,7 +22,7 @@ export class StudentlistComponent {
  */
 public students:any;
 constructor(private std:ServiceService) {
-  this.students=std.getStudents();
+  // this.students=std.getStudents();
   
   
 }
