@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from 'src/app/Service/post.service';
 
 @Component({
@@ -6,31 +7,45 @@ import { PostService } from 'src/app/Service/post.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent {
-  constructor(private postService: PostService) { }
+export class FormComponent implements OnInit {
+  newForm!: FormGroup; // Use '!' to tell TypeScript that it will be initialized in ngOnInit()
+
   response: boolean = false;
   errorOccurred: boolean = false;
-  save(newForm: any) {
-    if (newForm.valid) { // Check if the form is valid
-      console.log(newForm.value); // Log the form data to the console
 
-      // Call your API service to save the form data
-      this.postService.createPost(newForm.value).subscribe(
+  constructor(private formBuilder: FormBuilder, private postService: PostService) { }
+
+  ngOnInit(): void {
+    this.newForm = this.formBuilder.group({
+      ranking: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      dob: ['', Validators.required],
+      country: ['', Validators.required],
+      score: ['', Validators.required]
+    });
+  }
+
+  save() {
+    // Your save method implementation
+    if (this.newForm.valid) {
+      console.log(this.newForm.value);
+
+      this.postService.createPost(this.newForm.value).subscribe(
         (response: any) => {
           console.log('Form data saved successfully:', response);
-          // Optionally, you can perform additional actions after saving data
-          this.response = true; 
+          this.response = true;
           this.errorOccurred = false;
         },
         (error: any) => {
           console.error('Error saving form data:', error);
-          // Handle error if needed
-          this.errorOccurred = true; // Set error flag to true
+          this.errorOccurred = true;
           this.response = false;
         }
       );
     } else {
-      console.log('Form is invalid.'); // Log a message if the form is invalid
+      console.log('Form is invalid.');
     }
   }
+
+  
 }

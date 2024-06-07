@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,21 +21,25 @@ export class ServiceService {
 
     return this.httpClient.post<any>(this.authUrl, credentials, httpOptions)
       .pipe(
-        tap(response => {
-          localStorage.setItem('token', response.token);
-        }),
         catchError(error => {
           return throwError(error);
         })
       );
   }
 
-  // New method to get token from local storage
-  getToken(): string | null {
-   
-    return localStorage.getItem('token');
-   
+  setToken(token: string) {
+    localStorage.setItem('token', token);
   }
- 
-  
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
+  clearToken() {
+    localStorage.removeItem('token');
+  }
 }

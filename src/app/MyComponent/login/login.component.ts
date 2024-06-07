@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
@@ -10,33 +11,39 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
-console: any;
 
-  constructor(private authService: ServiceService) { }
+  constructor(private authService: ServiceService, private router: Router) { }
 
-  // Method to handle login
+ 
   login() {
-    // Check if username and password are provided
+    
     if (!this.username || !this.password) {
       this.errorMessage = 'Please provide both username and password.';
-      return;
+      console.log("Username: ", this.username);
+    console.log("Password: ", this.password);
+    return;
+      
     }
-
-    // Call the authentication service to authenticate user
+  
     this.authService.authenticateUser({ username: this.username, password: this.password })
       .subscribe(
         response => {
-          // Clear error message if authentication is successful
           this.errorMessage = '';
-          // Log success message to the console
           console.log('Login successful');
-          // Redirect or perform any other action upon successful authentication
-          
+          if (response.token) {
+            console.log(response.token);
+            
+            this.authService.setToken(response.token); // Set token here
+            this.router.navigate(['/user/about']);
+          } else {
+            console.error('Token not found in response.');
+            this.errorMessage = 'An error occurred during authentication.';
+          }
         },
         error => {
-          // Display error message if authentication fails
           this.errorMessage = 'Authentication failed. Please check your credentials and try again.';
         }
       );
   }
+  
 }
