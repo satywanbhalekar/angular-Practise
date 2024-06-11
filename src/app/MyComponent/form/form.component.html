@@ -15,7 +15,7 @@
             <div *ngIf="newForm?.get('name')?.hasError('minlength')">Minimum length of 3 characters is required</div>
           </div>
           <label for="dob" class="form-label">dob</label>
-          <input type="text" formControlName="dob" class="form-control" placeholder="Enter your dob" name="dob">
+          <input type="date" formControlName="dob" class="form-control" placeholder="Enter your dob" name="dob">
           <div class="alert alert-danger" *ngIf="newForm?.get('dob')?.invalid && newForm?.get('dob')?.touched">
             <div *ngIf="newForm?.get('dob')?.hasError('required')">Date of Birth is required</div>
           </div>

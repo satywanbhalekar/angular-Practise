@@ -1,0 +1,8 @@
+<form #updateForm="ngForm" (ngSubmit)="updateData(updateForm)">
+    <input type="text" name="name" [(ngModel)]="name" placeholder="Username" required>
+    <input type="date" name="dob" [(ngModel)]="dob" placeholder="Date of Birth"  required>
+    <input type="text" name="country" [(ngModel)]="country" placeholder="Country" required>
+    <input type="number" name="score" [(ngModel)]="score" placeholder="Score" required>
+    <button type="submit">Update</button>
+  </form>
+  

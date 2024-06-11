@@ -15,6 +15,7 @@ import { ApiComponent } from './MyComponent/api/api.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './MyComponent/login/login.component';
 import { SignupComponent } from './MyComponent/signup/signup.component';
+import { UpdateComponent } from './MyComponent/update/update.component';
 
 
 
@@ -36,6 +37,7 @@ import { SignupComponent } from './MyComponent/signup/signup.component';
     ApiComponent,
     LoginComponent,
     SignupComponent,
+    UpdateComponent,
 
   
    

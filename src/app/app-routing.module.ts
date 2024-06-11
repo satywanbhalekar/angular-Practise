@@ -5,6 +5,7 @@ import { ApiComponent } from './MyComponent/api/api.component';
 import { FormComponent } from './MyComponent/form/form.component';
 import { LoginComponent } from './MyComponent/login/login.component';
 import { SignupComponent } from './MyComponent/signup/signup.component';
+import { UpdateComponent } from './MyComponent/update/update.component';
 import { AuthGuard } from './guards/auth.guard'; // Import the AuthGuard
 
 
@@ -13,9 +14,10 @@ const routes: Routes = [
 
   { path: 'user/about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'form', component: FormComponent },
-  { path: 'api', component: ApiComponent },
+  { path: 'api', component: ApiComponent,canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'update/:id', component: UpdateComponent },
 
 
 ];

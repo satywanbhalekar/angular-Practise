@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from 'src/app/Service/post.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostService } from 'src/app/Service/post.service';
 
 // Import the PostService
 
@@ -10,26 +10,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./api.component.css']
 })
 export class ApiComponent {
-  public posts: any; // Assuming posts is an array of any type
+  posts: any[] = [];
 
-  constructor(private post: PostService ,private router: Router) { }
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
-    this.post.getPosts().subscribe((response) => {
-      this.posts = response; // Assign the posts array to this.posts
-      console.log(this.posts);
-    });
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    this.postService.getPosts().subscribe(
+      posts => {
+        this.posts = posts;
+      },
+      error => {
+        console.error('Failed to fetch posts', error);
+      }
+    );
   }
 
   deletePost(postId: string) {
-    // Call your API service to delete the post
-    this.post.deletePost(postId).subscribe(() => {
-      // Remove the deleted post from the local array
-      this.posts = this.posts.filter((post: { _id: string; }) => post._id !== postId);
-    });
+    this.postService.deletePost(postId).subscribe(
+      response => {
+        console.log('Delete successful', response);
+        this.fetchPosts();
+      },
+      error => {
+        console.error('Delete failed', error);
+      }
+    );
   }
 
-
-  
+  navigateToUpdate(postId: string) {
+    this.router.navigate(['/update', postId]);
+  }
 
 }
