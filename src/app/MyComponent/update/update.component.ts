@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/Service/post.service'; // Adjust the import path as necessary
 
@@ -45,10 +44,10 @@ export class UpdateComponent implements OnInit {
   }
 
 
-  updateData(form: NgForm) {
+  updateData() {
     
     if (this.postId) {
-      console.log(this.name);
+     
       const updateBody = {
         name: this.name,
        
@@ -60,7 +59,7 @@ export class UpdateComponent implements OnInit {
       this.postService.updatePost(this.postId, updateBody).subscribe(
         (        response: any) => {
           console.log('Update successful', response);
-          form.reset();
+          // form.reset();
           this.router.navigate(['/']); // Navigate to the post list or another appropriate page
         },
         (        error: any) => {
