@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./two-way-databinding.component.css']
 })
 export class TwoWayDatabindingComponent {
-  name="satyawan"
-
+  name=""
 }

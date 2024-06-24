@@ -31,7 +31,7 @@ export class UpdateComponent implements OnInit {
 
   loadPostDetails(postId: string) {
     this.postService.getPostById(postId).subscribe(
-      (      post: { name: string; dob: string; country: string; score: number | undefined; }) => {
+      (      post: any) => {
         this.name = post.name;
         this.dob = post.dob;
         this.country = post.country;

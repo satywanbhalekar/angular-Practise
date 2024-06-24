@@ -10,7 +10,7 @@ import { PostService } from 'src/app/Service/post.service';
   styleUrls: ['./api.component.css']
 })
 export class ApiComponent {
-  posts: any[] = [];
+  posts: any;
 
   constructor(private postService: PostService, private router: Router) {}
 
