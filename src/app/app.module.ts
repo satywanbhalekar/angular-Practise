@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './MyComponent/login/login.component';
 import { SignupComponent } from './MyComponent/signup/signup.component';
 import { UpdateComponent } from './MyComponent/update/update.component';
+import { PagenotfoundComponent } from './MyComponent/pagenotfound/pagenotfound.component';
 
 
 
@@ -38,6 +39,7 @@ import { UpdateComponent } from './MyComponent/update/update.component';
     LoginComponent,
     SignupComponent,
     UpdateComponent,
+    PagenotfoundComponent,
 
   
    

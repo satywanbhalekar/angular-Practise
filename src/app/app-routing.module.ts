@@ -7,6 +7,7 @@ import { LoginComponent } from './MyComponent/login/login.component';
 import { SignupComponent } from './MyComponent/signup/signup.component';
 import { UpdateComponent } from './MyComponent/update/update.component';
 import { AuthGuard } from './guards/auth.guard'; // Import the AuthGuard
+import { PagenotfoundComponent} from './MyComponent/pagenotfound/pagenotfound.component';
 
 
 
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'update/:id', component: UpdateComponent },
+  { path: '**', pathMatch: 'full',  
+  component: PagenotfoundComponent }
 
 
 ];
